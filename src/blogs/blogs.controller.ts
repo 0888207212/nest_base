@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Param, Post, Put, Req, UseGuards } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { Roles } from 'src/auth/decorator/roles.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-guard';
 import { JwtStrategy } from 'src/auth/guards/jwt-strategy';
@@ -8,6 +9,7 @@ import { BlogsService } from './blogs.service';
 import { CreateBlogDto } from './dto/create-blog.dto';
 import { UpdateBlogDto } from './dto/update-blog.dto';
 
+@ApiTags('Blog')
 @Controller('blog')
 export class BlogsController {
     constructor(private blogService:BlogsService){}

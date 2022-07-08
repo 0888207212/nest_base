@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { BlogEntity } from 'src/blogs/entitys/blog.entity';
 import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 
@@ -20,6 +21,7 @@ export class UserEntity  extends BaseEntity{
     @Column()
     email: string;
 
+    @ApiProperty({ enum: UserRole})
     @Column({type: 'enum', enum: UserRole, default: UserRole.USER})
     role: UserRole;
 
@@ -28,6 +30,7 @@ export class UserEntity  extends BaseEntity{
 
     @CreateDateColumn()
     createdAt: Date;
+
     @UpdateDateColumn()
     updatedAt: Date;
 }
